@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丰子恺纪念馆</title>
+    <style>
+        body {  
+            font-family: 'Georgia', serif;  
+            margin: 0;  
+            padding: 0;  
+            background-color: #eae3d2;  
+            color: #333;  
+        }  
+        header {  
+            background: linear-gradient(90deg, #FFFFFF, #d6c9a8);  
+            color: black;  
+            padding: 8px 0;  
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
+        }  
+       nav {  
+       position: absolute; /* 使用绝对定位 */  
+       top: 15px;         /* 距离顶部20像素 */  
+       right: 3%;       /* 距离右边20像素 */  
+       background-color: rgba(255, 255, 255, 0.8); /* 背景颜色和透明度*/  
+       padding: 10px;  
+       border-radius: 5px; /* 圆角效果 */  
+       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 阴影效果 */  
+		}
+      nav a {  
+            margin: 0 75px;  
+            color:#5a3e1b ;  
+            text-decoration: none;  
+            font-weight: bold;  
+            transition: color 0.3s;  
+        }  
+      nav a:hover {  
+            color: #ffdd57;  
+		}  	  
+          
+        section {  
+            padding: 40px 20px;  
+            max-width: 800px;  
+            margin: 20px auto;  
+            background-color: ;  
+            border-radius: 8px;  
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  
+        }  
+		.pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            padding: 10px 20px;
+            background-color: #5a3e1b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        .pagination button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        h1 {
+			color:#5a3e1b;
+            margin: 0;  
+        }  
+        h2 {  
+            color: #5a3e1b;  
+            border-bottom: 2px solid #5a3e1b;  
+            padding-bottom: 10px;  
+            margin-bottom: 20px;  
+        }  
+        img {  
+            max-width: 100%;  
+			max-height:1400px;
+			overflow-y:hidden;
+            height: auto;  
+            border-radius: 8px;  
+        }
+		#about {
+    text-align: center; /* 添加这一行使图片水平居中 */
+    padding: 40px 20px;
+    max-width: 80%;
+    margin: 20px auto;
+    background-color: ; /* 如果需要背景色，请填写具体颜色 */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+        footer {  
+            text-align: center;  
+            padding: 20px;  
+            background: linear-gradient(90deg, #FFFFFF, #d6c9a8);  
+            color: white;  
+            position: relative;  
+            bottom: 0;  
+            width: 100%;  
+            margin-top: 20px;  
+        }  
+		
+		p{
+			color: #5a3e1b;
+		}
+        html {
+            scroll-behavior: smooth;
+        }
+		.top-botton {
+			position: absolute;
+            right: 0;
+			bottom:1%;
+			height: 100px;
+			width: 100px;
+            background-image: url('floatbtn2.png');
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-position: center;
+			background-color:rgba(234,227,210,1.00);
+            border: none; 
+            cursor: pointer; 
+            outline: none; 
+		}
+/* 动画样式 */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  /* 动画容器样式 */
+  #animation-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #d6c9a8; /* 黑色背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 1; /* 初始不透明 */
+    transition: opacity 1s ease-in-out; /* 渐变效果 */
+  }
+
+  /* 动画图片样式 */
+  #loading-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  /* 主页面内容样式 */
+  #main-content {
+    display: none; /* 默认不显示 */
+    opacity: 0; /* 初始透明 */
+    transition: opacity 1s ease-in-out; /* 渐变效果 */
+  }
+		
+/* 定义图片的基本样式 */
+/* 定义图片的放大效果 */
+.img-container img {
+  transition: transform 0.3s ease; /* 平滑过渡效果 */
+}
+
+/* 鼠标悬停时的放大效果 */
+.img-container img:hover {
+  transform: scale(1.1); /* 放大1.1倍 */
+}            
+    </style>
+</head>
+<body>
+	<!-- 动画容器 -->
+<div id="animation-container">
+  <img id="loading-image" src="logo.png" alt="加载动画">
+  <div class="loading-text"></div>
+</div>
+
+    <header>  
+	<div class="img-container">
+  <a href="index1.html" target="_blank">
+  <img src="logo.png" alt="主页图标">
+</a>
+    
+    <nav>  
+        <a href="introduction.html">景区介绍</a>  
+        <a href="#travel-guide">参观指南</a>  
+        <a href="#Exhibition">展陈研究</a>  
+        <a href="#contact">联系我们</a>  
+    </nav>  
+</header> 
+	<main>  
+ <h2>桐乡市丰子恺纪念馆风景导览页</h2>  
+	<button class="top-botton" onclick="scrollToTop()"></button>
+    <section id="about">
+        <img src="fzk.png" alt="图片" id="gallery-image" onmouseover="pauseAutoPlay()" onmouseout="startAutoPlay()">
+        <div class="pagination">
+            <button onclick="changeImage(-1)" id="prev-btn" disabled>&lt; 上一张</button>
+            <button onclick="changeImage(1)" id="next-btn">下一张 &gt;</button>
+        </div>	
+    </section>
+	</main>
+    <footer id="contact">
+        <h2>联系我们</h2>
+        <p>电话：0573-8611275</p>
+        <p>地址：浙江省桐乡市石门镇西市街大井弄1号（丰子恺纪念馆）</p>
+		
+    </footer>
+	
+	
+	
+	<script>
+        var images = ["fzk.png", "丰子恺雕塑 .jpg", "缘缘堂 .jpg"]; // 图片路径数组
+        var currentIndex = 0; // 当前显示的图片索引
+        var autoPlayInterval; // 自动播放的定时器
+
+        function changeImage(step) {
+            currentIndex += step;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            document.getElementById('gallery-image').src = images[currentIndex];
+            updateButtons();
+        }
+
+        function updateButtons() {
+            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            document.getElementById('next-btn').disabled = currentIndex === images.length - 1;
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(function() {
+                changeImage(1);
+            }, 3000); // 每3秒自动切换图片
+        }
+
+        function pauseAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        // 初始化按钮状态和自动播放
+        updateButtons();
+        startAutoPlay();
+		
+		function scrollToTop() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // 当用户滚动一定距离后显示回到顶部按钮
+    window.onscroll = function() {
+        var scrollBtn = document.getElementById("scroll-top-btn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollBtn.style.display = "block";
+        } 
+		else {
+            scrollBtn.style.display = "none";
+        }
+    };
+// 当文档加载完成后执行
+  document.addEventListener('DOMContentLoaded', function() {
+    // 获取动画容器、动画图片和主页面内容元素
+    var animationContainer = document.getElementById('animation-container');
+    var mainContent = document.getElementById('main-content');
+
+    // 设置延时，以便图片显示一段时间
+    setTimeout(function() {
+      // 图片渐出
+      animationContainer.style.opacity = '0';
+      
+      // 图片渐出动画结束后，显示主页面内容
+      animationContainer.addEventListener('transitionend', function() {
+        animationContainer.style.display = 'none'; // 隐藏动画容器
+        mainContent.style.display = 'block'; // 显示主页面内容
+        
+        // 主页面内容渐入
+        setTimeout(function() {
+          mainContent.style.opacity = '1';
+        }, 10); // 短暂延迟确保渐入效果
+      });
+    }, 1000); // 延迟2秒后开始渐出动画
+  });
+    </script>
+</body>
+</html>

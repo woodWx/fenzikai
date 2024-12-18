@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>无缝循环轮播</title>
+<style>
+  .carousel-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .carousel-slide {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  .carousel-slide img {
+    width: 100%;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+</style>
+</head>
+<body>
+
+<div class="carousel-container">
+  <div class="carousel-slide">
+    <img src="作品1.jpg" alt="Image 1">
+    <img src="作品1.jpg" alt="Image 2">
+    <img src="作品3.jpg" alt="Image 3">
+    <!-- 更多图片 -->
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let slideIndex = 0;
+  const slides = document.querySelector('.carousel-slide');
+  const slideWidth = slides.querySelector('img').clientWidth;
+  const slideCount = slides.children.length;
+
+  function moveSlide() {
+    slideIndex++;
+    if (slideIndex >= slideCount) {
+      slideIndex = 0;
+      slides.style.transition = 'none'; // 禁用过渡效果
+    } else {
+      slides.style.transition = 'transform 0.5s ease-in-out'; // 启用过渡效果
+    }
+    slides.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+    
+    // 如果我们跳转到了第一张图片，我们需要重新设置transition
+    if (slideIndex === 0) {
+      // 强制重排，以确保transition属性生效
+      slides.offsetLeft;
+      slides.style.transition = 'transform 0.5s ease-in-out';
+    }
+  }
+
+  setInterval(moveSlide, 3000); // 每3秒切换一次图片
+});
+</script>
+
+</body>
+</html>
